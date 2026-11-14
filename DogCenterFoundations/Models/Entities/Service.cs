@@ -1,4 +1,4 @@
-﻿namespace DogCenter.Models.Entities;
+﻿namespace DogCenterFoundations.Models.Entities;
 
 public class Service
 {

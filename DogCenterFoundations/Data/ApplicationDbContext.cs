@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using DogCenter.Models.Entities;
+using DogCenterFoundations.Models.Entities;
 
-namespace DogCenter.Data
+namespace DogCenterFoundations.Data
 {
     public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : IdentityDbContext(options)
     {
