@@ -1,0 +1,68 @@
+﻿@model DogCenterFoundations.Models.ViewModels.DogDetailsViewModel
+
+@{
+    ViewData["Title"] = "Dog Details";
+}
+
+<h1>Dog Details</h1>
+
+<p>
+    View dog information
+</p>
+
+
+<dl>
+    <dt>Name</dt>
+    <dd class="col-sm-9">@Model.Name</dd>
+
+    <dt>Breed</dt>
+    <dd>@Model.Breed</dd>
+
+    <dt>Birthday</dt>
+    <dd>@Model.Birthday.ToString("dd MMM yyyy")</dd>
+
+    <dt>Microchip ID</dt>
+    <dd>@Model.MicrochipId</dd>
+
+    <dt>Registration Date</dt>
+    <dd>@Model.RegistrationDate.ToString("dd MMM yyyy")</dd>
+
+    <dt>VIP Status</dt>
+    <dd>@(Model.IsVip ? "Yes" : "No")</dd>
+
+    <dt>Owner</dt>
+    <dd>
+        <a asp-controller="Owners"
+           asp-action="Details"
+           asp-route-id="@Model.OwnerId">
+            @Model.OwnerName
+        </a>
+    </dd>
+
+    <dt>Notes</dt>
+    <dd>@Model.Notes</dd>
+</dl>
+
+
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">
+        Edit
+    </a>
+
+    <a asp-action="Index">
+        Back to Dog List
+    </a>   
+</div>
+
+
+
+<form asp-action="Delete"
+      asp-route-id="@Model.Id"
+      method="post"
+      onsubmit="return confirm('Are you sure you want to delete');">
+
+    <button type="submit">Delete</button>
+
+</form>
+
+

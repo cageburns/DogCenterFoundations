@@ -57,6 +57,29 @@ public class DogService : IDogService
     }
 
 
+    public async Task<DogCreateViewModel> GetDogCreateViewModelAsync()
+    {
+        var owners = await _context.Owners
+            .OrderBy(o => o.FirstName)
+            .ThenBy(o => o.LastName)
+            .Select(o => new OwnerListViewModel
+            {
+                Id = o.Id,
+                FirstName = o.FirstName,
+                LastName = o.LastName,
+                PhoneNumber = o.PhoneNumber,
+                Email = o.Email
+            })
+            .ToListAsync();
+
+        return new DogCreateViewModel
+        {
+            Birthday = DateTime.Today,
+            Owners = owners
+        };
+    }
+
+
     public async Task CreateDogAsync(DogCreateViewModel model)
     {
         var dog = new Dog
@@ -93,9 +116,21 @@ public class DogService : IDogService
             Breed = dog.Breed,
             Birthday = dog.Birthday,
             MicrochipId = dog.MicrochipId,
-            OwnerId = dog.OwnerId,
             IsVip = dog.IsVip,
-            Notes = dog.Notes
+            Notes = dog.Notes,
+            OwnerId = dog.OwnerId,
+            Owners = await _context.Owners
+                .OrderBy(o => o.FirstName)
+                .ThenBy(o => o.LastName)
+                .Select(o => new OwnerListViewModel
+                {
+                    Id = o.Id,
+                    FirstName = o.FirstName,
+                    LastName = o.LastName,
+                    PhoneNumber = o.PhoneNumber,
+                    Email = o.Email
+                })
+                .ToListAsync()
         };
     }
 

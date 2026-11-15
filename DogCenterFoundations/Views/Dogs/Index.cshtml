@@ -1,0 +1,70 @@
+﻿@model IEnumerable<DogCenterFoundations.Models.ViewModels.DogListViewModel>
+
+@{
+    ViewData["Title"] = "Dogs";
+}
+
+<h1>Dogs</h1>
+
+<p>
+    View and manage
+</p>
+
+
+@if (TempData["SuccessMessage"] is string message)
+{
+    <div>
+        @message
+    </div>
+}
+
+<p>
+    <a asp-controller="Dogs" asp-action="Create">
+        Add Dog
+    </a>
+</p>
+
+
+<div>
+
+    @foreach (var dog in Model)
+    {
+        <div>
+            <div>
+                <div>
+                    <h5>
+                        @dog.Name
+
+                        @if (dog.IsVip)
+                        {
+                            <span>VIP</span>
+                        }
+                    </h5>
+
+                    <p>
+                        <strong>Breed:</strong> @dog.Breed
+                    </p>
+
+                    <p>
+                        <strong>Birthday:</strong> @dog.Birthday.ToString("dd MMM yyyy")
+                    </p>
+
+                    <p>
+                        <strong>Owner:</strong> @dog.OwnerName
+                    </p>
+
+
+                    <div>
+                        <a asp-action="Details" asp-route-id="@dog.Id">
+                            Details
+                        </a>
+
+                        <a asp-action="Edit" asp-route-id="@dog.Id">
+                            Edit
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>

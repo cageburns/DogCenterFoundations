@@ -21,6 +21,7 @@ namespace DogCenterFoundations
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             builder.Services.AddControllersWithViews();
             builder.Services.AddScoped<IOwnerService, OwnerService>();
+            builder.Services.AddScoped<IDogService, DogService>();
 
             var app = builder.Build();
 

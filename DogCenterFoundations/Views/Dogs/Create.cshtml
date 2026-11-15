@@ -1,0 +1,82 @@
+﻿@model DogCenterFoundations.Models.ViewModels.DogCreateViewModel
+
+@{
+    ViewData["Title"] = "Register New Dog";
+}
+
+<h1>Register New Dog</h1>
+
+<p>
+    Enter the dog's information
+</p>
+
+<form asp-action="Create" method="post">
+    <div asp-validation-summary="ModelOnly"></div>
+
+    <div>
+        <label asp-for="Name"></label>
+        <input asp-for="Name" />
+        <span asp-validation-for="Name"></span>
+    </div>
+
+    <div>
+        <label asp-for="Breed"></label>
+        <input asp-for="Breed"/>
+        <span asp-validation-for="Breed"></span>
+    </div>
+
+    <div>
+        <label asp-for="Birthday"></label>
+        <input asp-for="Birthday" type="date" />
+        <span asp-validation-for="Birthday"></span>
+    </div>
+
+    <div>
+        <label asp-for="MicrochipId"></label>
+        <input asp-for="MicrochipId"/>
+        <span asp-validation-for="MicrochipId"></span>
+    </div>
+
+    <div>
+        <input asp-for="IsVip"/>
+        <label asp-for="IsVip">VIP</label>
+    </div>
+    
+    <div>
+        <label asp-for="OwnerId">Owner</label>
+
+        <select asp-for="OwnerId">
+            <option value="">Select an owner</option>
+
+            @foreach (var owner in Model.Owners)
+            {
+                <option value="@owner.Id">
+                    @owner.FirstName @owner.LastName
+                </option>
+            }
+        </select>
+
+        <span asp-validation-for="OwnerId"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Notes">Notes</label>
+        <textarea asp-for="Notes"></textarea>
+        <span asp-validation-for="Notes"></span>
+    </div>
+        
+    <div>
+        <button type="submit">
+            Save
+        </button>
+
+        <a asp-action="Index">
+            Cancel
+        </a>
+    </div>
+
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

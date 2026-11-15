@@ -9,6 +9,8 @@ public interface IDogService
 
     Task<DogDetailsViewModel> GetDogDetailsByIdAsync(int id);
 
+    Task<DogCreateViewModel> GetDogCreateViewModelAsync();
+
     Task CreateDogAsync(DogCreateViewModel model);
 
     Task<DogEditViewModel> GetDogForEditAsync(int id);

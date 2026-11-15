@@ -40,9 +40,11 @@ public class DogsController : Controller
 
 
     [HttpGet]
-    public IActionResult Create()
+    public async Task<IActionResult> Create()
     {
-        return View();
+        var model = await _dogService.GetDogCreateViewModelAsync();
+
+        return View(model);
     }
 
 
@@ -52,6 +54,10 @@ public class DogsController : Controller
     {
         if (!ModelState.IsValid)
         {
+            var createModel = await _dogService.GetDogCreateViewModelAsync();
+
+            model.Owners = createModel.Owners;
+
             return View(model);
         }
 
@@ -88,13 +94,17 @@ public class DogsController : Controller
             return BadRequest();
         }
 
-        if (!ModelState.IsValid)
-        {
-            return View(model);
-        }
-
         try
         {
+            if (!ModelState.IsValid)
+            {
+                var editModel = await _dogService.GetDogForEditAsync(id);
+
+                model.Owners = editModel.Owners;
+
+                return View(model);
+            }
+
             await _dogService.EditDogAsync(model);
 
             TempData["SuccessMessage"] = "Dog record updated successfully!";
@@ -106,7 +116,6 @@ public class DogsController : Controller
             return NotFound();
         }
     }
-
 
 
     [HttpPost]
