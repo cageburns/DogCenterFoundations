@@ -13,9 +13,8 @@ public class OwnerCreateViewModel
     public string LastName { get; set; } = null!;
 
     [Required]
-    [Phone]
-    [StringLength(30)]
-    public string PhoneNumber { get; set; } = null!;
+    [RegularExpression(@"^\+?[0-9]+$", ErrorMessage = "Phone number may only contain digits and +.")]
+    public string PhoneNumber { get; set; } = string.Empty;
 
     [Required]
     [EmailAddress]

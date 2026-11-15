@@ -5,7 +5,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace DogCenterFoundations.Controllers;
 
-
 [Authorize]
 public class OwnersController : Controller
 {
@@ -45,13 +44,6 @@ public class OwnersController : Controller
     }
 
 
-    [HttpGet]
-    public IActionResult CreateSuccess()
-    {
-        return View();
-    }
-
-
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Create(OwnerCreateViewModel model)
@@ -63,7 +55,9 @@ public class OwnersController : Controller
 
         await _ownerService.CreateOwnerAsync(model);
 
-        return RedirectToAction(nameof(CreateSuccess));
+        TempData["SuccessMessage"] = "Person created successfully!";
+
+        return RedirectToAction(nameof(Index));
     }
 
 
@@ -80,13 +74,6 @@ public class OwnersController : Controller
         {
             return NotFound();
         }
-    }
-
-
-    [HttpGet]
-    public IActionResult EditSuccess()
-    {
-        return View();
     }
 
 
@@ -108,7 +95,9 @@ public class OwnersController : Controller
         {
             await _ownerService.EditOwnerAsync(model);
 
-            return RedirectToAction(nameof(EditSuccess));
+            TempData["SuccessMessage"] = "Person data updated successfully!";
+
+            return RedirectToAction(nameof(Index));
         }
         catch (ArgumentException)
         {
