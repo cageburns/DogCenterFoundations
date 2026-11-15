@@ -21,11 +21,7 @@ public class DogCreateViewModel
 
     [Range(1, int.MaxValue)]
     public int OwnerId { get; set; }
-
-    [Required]
-    [DataType(DataType.Date)]
-    public DateTime RegistrationDate { get; set; }
-
+       
     public bool IsVip { get; set; }
 
     [StringLength(1000)]
