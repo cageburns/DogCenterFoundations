@@ -1,0 +1,45 @@
+﻿@model DogCenterFoundations.Models.ViewModels.MedicalRecordDetailsViewModel
+
+@{
+    ViewData["Title"] = $"{Model.Name} from {Model.Date:dd MMM yyyy}";
+}
+
+<h1>@Model.Name - @Model.Date.ToString("dd MMM yyyy")</h1>
+
+<p>
+    View the medical record
+</p>
+
+<dl>
+    <dt>Record Type</dt>
+    <dd>@Model.RecordType</dd>
+
+    <dt>Dog</dt>
+    <dd>@Model.DogName</dd>
+
+    <dt>Brand</dt>
+    <dd>@(Model.Brand ?? "")</dd>
+
+    <dt>Next Due Date</dt>
+    <dd>
+        @(Model.NextDueDate?.ToString("dd MMM yyyy") ?? "")
+    </dd>
+
+    <dt>Notes</dt>
+    <dd>@(Model.Notes ?? "")</dd>
+</dl>
+
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">
+        Edit
+    </a>
+
+    <a asp-controller="Dogs"
+       asp-action="Details"
+       asp-route-id="@Model.DogId"
+       class="btn btn-secondary">
+        Back to Dog Profile
+    </a>
+     
+
+</div>

@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+using System.ComponentModel.DataAnnotations;
 
 namespace DogCenterFoundations.Models.ViewModels;
 
@@ -6,6 +7,9 @@ public class MedicalRecordCreateViewModel
 {
     [Range(1, int.MaxValue, ErrorMessage = "Missing dog")]
     public int DogId { get; set; }
+
+    [ValidateNever]
+    public string DogName { get; set; } = string.Empty;
 
     [Required]
     public string RecordType { get; set; } = string.Empty;

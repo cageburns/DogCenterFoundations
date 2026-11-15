@@ -56,6 +56,24 @@ public class MedicalRecordService : IMedicalRecordService
     }
 
 
+    public async Task<MedicalRecordCreateViewModel> GetMedicalRecordCreateViewModelAsync(int dogId)
+    {
+        var dog = await _context.Dogs
+            .FirstOrDefaultAsync(d => d.Id == dogId);
+
+        if (dog == null)
+        {
+            throw new ArgumentException("Dog not found.");
+        }
+
+        return new MedicalRecordCreateViewModel
+        {
+            DogId = dog.Id,
+            DogName = dog.Name
+        };
+    }
+
+
     public async Task CreateMedicalRecordAsync(MedicalRecordCreateViewModel model)
     {
         var record = new MedicalRecord
@@ -81,7 +99,7 @@ public class MedicalRecordService : IMedicalRecordService
 
         if (record == null)
         {
-            throw new ArgumentException("Medical record not found");
+            throw new ArgumentException("Medical record not found.");
         }
 
         return new MedicalRecordEditViewModel
@@ -103,7 +121,7 @@ public class MedicalRecordService : IMedicalRecordService
 
         if (record == null)
         {
-            throw new ArgumentException("Medical record not found");
+            throw new ArgumentException("Medical record not found.");
         }
 
         record.RecordType = model.RecordType;
@@ -122,7 +140,7 @@ public class MedicalRecordService : IMedicalRecordService
 
         if (record == null)
         {
-            throw new ArgumentException("Medical record not found");
+            throw new ArgumentException("Medical record not found.");
         }
 
         int dogId = record.DogId;
@@ -133,6 +151,4 @@ public class MedicalRecordService : IMedicalRecordService
 
         return dogId;
     }
-
 }
-

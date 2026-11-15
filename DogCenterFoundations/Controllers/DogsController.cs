@@ -8,12 +8,16 @@ namespace DogCenterFoundations.Controllers;
 [Authorize]
 public class DogsController : Controller
 {
-    private readonly IDogService _dogService;
 
-    public DogsController(IDogService dogService)
+    private readonly IDogService _dogService;
+    private readonly IMedicalRecordService _medicalRecordService;
+
+    public DogsController(IDogService dogService, IMedicalRecordService medicalRecordService)
     {
         _dogService = dogService;
+        _medicalRecordService = medicalRecordService;
     }
+
 
 
     public async Task<IActionResult> Index()
@@ -24,11 +28,14 @@ public class DogsController : Controller
     }
 
 
+
     public async Task<IActionResult> Details(int id)
     {
         try
         {
             var dog = await _dogService.GetDogDetailsByIdAsync(id);
+
+            dog.MedicalRecords = await _medicalRecordService.GetMedicalRecordsByDogIdAsync(id);
 
             return View(dog);
         }
@@ -107,7 +114,7 @@ public class DogsController : Controller
 
             await _dogService.EditDogAsync(model);
 
-            TempData["SuccessMessage"] = "Dog record updated successfully!";
+            TempData["SuccessMessage"] = "Dog updated successfully!";
 
             return RedirectToAction(nameof(Index));
         }

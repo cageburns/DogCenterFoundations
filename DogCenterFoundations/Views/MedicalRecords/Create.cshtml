@@ -1,0 +1,66 @@
+﻿@model DogCenterFoundations.Models.ViewModels.MedicalRecordCreateViewModel
+
+@{
+    ViewData["Title"] = "Create Medical Record";
+}
+
+<h1>Create Medical Record</h1>
+
+<p>
+    Enter the medical record information for @Model.DogName.
+</p>
+
+
+<form asp-action="Create" method="post">
+    <input type="hidden" asp-for="DogId" />
+
+    <div asp-validation-summary="ModelOnly"></div>
+      
+
+    <div>
+        <label asp-for="Name"></label>
+        <input asp-for="Name"/>
+        <span asp-validation-for="Name"></span>
+    </div>
+
+    <div>
+        <label asp-for="RecordType"></label>
+        <input asp-for="RecordType"/>
+        <span asp-validation-for="RecordType"></span>
+    </div>
+
+    <div>
+        <label asp-for="Brand"></label>
+        <input asp-for="Brand"/>
+        <span asp-validation-for="Brand"></span>
+    </div>
+
+    <div>
+        <label asp-for="NextDueDate"></label>
+        <input asp-for="NextDueDate" type="date" />
+        <span asp-validation-for="NextDueDate"></span>
+    </div>
+
+    <div>
+        <label asp-for="Notes"></label>
+        <textarea asp-for="Notes"></textarea>
+        <span asp-validation-for="Notes"></span>
+    </div>
+
+    <div>
+        <button type="submit">
+            Save
+        </button>
+
+        <a asp-controller="Dogs"
+           asp-action="Details"
+           asp-route-id="@Model.DogId">
+            Cancel
+        </a>
+    </div>
+</form>
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

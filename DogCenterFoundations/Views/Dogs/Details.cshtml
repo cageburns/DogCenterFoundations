@@ -6,6 +6,13 @@
 
 <h1>Dog Details</h1>
 
+@if (TempData["SuccessMessage"] is string message)
+{
+    <div role="alert">
+        @message
+    </div>
+}
+
 <p>
     View dog information
 </p>
@@ -66,3 +73,36 @@
 </form>
 
 
+<h3>Medical Records</h3>
+
+<p>
+    <a asp-controller="MedicalRecords"
+       asp-action="Create"
+       asp-route-dogId="@Model.Id">
+        Add
+    </a>
+</p>
+
+@if (Model.MedicalRecords.Any())
+{
+    <ul>
+        @foreach (var record in Model.MedicalRecords)
+        {
+            <li>
+                <a asp-controller="MedicalRecords"
+                   asp-action="Details"
+                   asp-route-id="@record.Id">@record.Name</a>
+
+                <span>
+                    (@record.Date.ToString("dd MMM yyyy"))
+                </span>
+            </li>
+        }
+    </ul>
+}
+else
+{
+    <p>
+        No medical records
+    </p>
+}

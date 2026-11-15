@@ -1,11 +1,14 @@
 ﻿using DogCenterFoundations.Models.ViewModels;
+
 namespace DogCenterFoundations.Services;
 
-public interface IMedicalRecordService
+public interface IMedicalRecordService  
 {
     Task<IEnumerable<MedicalRecordListViewModel>> GetMedicalRecordsByDogIdAsync(int dogId);
 
     Task<MedicalRecordDetailsViewModel> GetMedicalRecordDetailsByIdAsync(int id);
+
+    Task<MedicalRecordCreateViewModel> GetMedicalRecordCreateViewModelAsync(int dogId);
 
     Task CreateMedicalRecordAsync(MedicalRecordCreateViewModel model);
 

@@ -21,4 +21,6 @@ public class DogDetailsViewModel
     public int OwnerId { get; set; }
 
     public string OwnerName { get; set; } = null!;
+
+    public IEnumerable<MedicalRecordListViewModel> MedicalRecords { get; set; } = new List<MedicalRecordListViewModel>();
 }
