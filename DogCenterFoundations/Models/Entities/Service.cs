@@ -10,5 +10,5 @@ public class Service
 
     public decimal Price { get; set; }
 
-    public string? Notes { get; set; }
+    public string Description { get; set; } = null!;
 }
