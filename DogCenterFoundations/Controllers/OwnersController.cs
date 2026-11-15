@@ -55,7 +55,7 @@ public class OwnersController : Controller
 
         await _ownerService.CreateOwnerAsync(model);
 
-        TempData["SuccessMessage"] = "Person created successfully!";
+        TempData["SuccessMessage"] = "Person recordcreated successfully!";
 
         return RedirectToAction(nameof(Index));
     }
@@ -95,7 +95,7 @@ public class OwnersController : Controller
         {
             await _ownerService.EditOwnerAsync(model);
 
-            TempData["SuccessMessage"] = "Person data updated successfully!";
+            TempData["SuccessMessage"] = "Person record updated successfully!";
 
             return RedirectToAction(nameof(Index));
         }
