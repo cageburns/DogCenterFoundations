@@ -32,11 +32,12 @@ public class OwnerService : IOwnerService
     public async Task<OwnerDetailsViewModel> GetOwnerDetailsByIdAsync(int id)
     {
         var owner = await _context.Owners
-            .FirstOrDefaultAsync(o => o.Id == id);
+             .Include(o => o.Dogs)
+             .FirstOrDefaultAsync(o => o.Id == id);
 
         if (owner == null)
         {
-            throw new ArgumentException("Person no longer exists.");
+            throw new ArgumentException("Person not found.");
         }
 
         return new OwnerDetailsViewModel
@@ -46,7 +47,19 @@ public class OwnerService : IOwnerService
             LastName = owner.LastName,
             PhoneNumber = owner.PhoneNumber,
             Email = owner.Email,
-            Notes = owner.Notes
+            Notes = owner.Notes,
+            Dogs = owner.Dogs
+                .OrderBy(d => d.Name)
+                .Select(d => new DogListViewModel
+                {
+                    Id = d.Id,
+                    Name = d.Name,
+                    Breed = d.Breed,
+                    Birthday = d.Birthday,
+                    OwnerName = $"{owner.FirstName} {owner.LastName}",
+                    IsVip = d.IsVip
+                })
+                .ToList()
         };
     }
 
@@ -74,7 +87,7 @@ public class OwnerService : IOwnerService
 
         if (owner == null)
         {
-            throw new ArgumentException("Person no longer exists.");
+            throw new ArgumentException("Person not found.");
         }
 
         return new OwnerEditViewModel
@@ -91,8 +104,7 @@ public class OwnerService : IOwnerService
 
     public async Task EditOwnerAsync(OwnerEditViewModel model)
     {
-        var owner = await _context.Owners
-            .FirstOrDefaultAsync(o => o.Id == model.Id);
+        var owner = await _context.Owners.FirstOrDefaultAsync(o => o.Id == model.Id);
 
         if (owner == null)
         {

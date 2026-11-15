@@ -13,4 +13,6 @@ public class OwnerDetailsViewModel
     public string Email { get; set; } = null!;
 
     public string? Notes { get; set; }
+
+    public IEnumerable<DogListViewModel> Dogs { get; set; } = new List<DogListViewModel>();
 }

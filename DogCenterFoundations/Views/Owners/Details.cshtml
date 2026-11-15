@@ -29,12 +29,36 @@
 </dl>
 
 
+<h3>Owned Dogs</h3>
+
+@if (Model.Dogs.Any())
+{
+    <ul>
+        @foreach (var dog in Model.Dogs)
+        {
+            <li>
+                <a asp-controller="Dogs"
+                   asp-action="Details"
+                   asp-route-id="@dog.Id">
+                    @dog.Name
+                </a>
+
+                <span>(@dog.Breed)</span>
+            </li>
+        }
+    </ul>
+}
+else
+{
+    <p>No dogs registered.</p>
+}
+
 <div>
     <a asp-action="Edit" asp-route-id="@Model.Id">
         Edit
     </a>
 
     <a asp-action="Index">
-        Back to Owner List
+        Back
     </a>
 </div>
