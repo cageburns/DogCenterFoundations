@@ -2,8 +2,8 @@
 using DogCenterFoundations.Models.Entities;
 using DogCenterFoundations.Models.ViewModels;
 using Microsoft.EntityFrameworkCore;
-
-namespace DogCenter.Services
+    
+namespace DogCenterFoundations.Services
 {
     public class ServiceService : IServiceService
     {

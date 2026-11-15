@@ -1,6 +1,6 @@
 ﻿using DogCenterFoundations.Models.ViewModels;
 
-namespace DogCenter.Services
+namespace DogCenterFoundations.Services
 {
     public interface IServiceService
     {
