@@ -1,0 +1,62 @@
+﻿@model DogCenterFoundations.Models.ViewModels.OwnerEditViewModel
+
+@{
+    ViewData["Title"] = "Edit Owner";
+}
+
+<h1>Edit Owner Data</h1>
+
+<p>
+    Update the owner's contact information
+</p>
+
+
+<form asp-action="Edit" asp-route-id="@Model.Id" method="post">
+    <input type="hidden" asp-for="Id" />
+
+    <div asp-validation-summary="ModelOnly"></div>
+
+    <div>
+        <label asp-for="FirstName"></label>
+        <input asp-for="FirstName"/>
+        <span asp-validation-for="FirstName"></span>
+    </div>
+
+    <div>
+        <label asp-for="LastName"></label>
+        <input asp-for="LastName"/>
+        <span asp-validation-for="LastName"></span>
+    </div>
+
+    <div>
+        <label asp-for="PhoneNumber"></label>
+        <input asp-for="PhoneNumber"/>
+        <span asp-validation-for="PhoneNumber"></span>
+    </div>
+
+    <div>
+        <label asp-for="Email"></label>
+        <input asp-for="Email"/>
+        <span asp-validation-for="Email"></span>
+    </div>
+
+    <div>
+        <label asp-for="Notes"></label>
+        <textarea asp-for="Notes"></textarea>
+        <span asp-validation-for="Notes"></span>
+    </div>
+
+
+    <button type="submit">
+        Save
+    </button>
+
+    <a asp-action="Details" asp-route-id="@Model.Id">
+        Cancel
+    </a>
+</form>
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

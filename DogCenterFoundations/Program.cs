@@ -1,4 +1,5 @@
 using DogCenterFoundations.Data;
+using DogCenterFoundations.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -19,6 +20,7 @@ namespace DogCenterFoundations
             builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             builder.Services.AddControllersWithViews();
+            builder.Services.AddScoped<IOwnerService, OwnerService>();
 
             var app = builder.Build();
 

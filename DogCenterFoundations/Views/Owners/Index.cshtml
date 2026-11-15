@@ -1,0 +1,63 @@
+﻿@model IEnumerable<DogCenterFoundations.Models.ViewModels.OwnerListViewModel>
+
+@{
+    ViewData["Title"] = "Owners";
+}
+
+<h1>Owners</h1>
+
+<p>
+    Instructions
+</p>
+
+
+@if (TempData["SuccessMessage"] is string message)
+{
+    <div>
+        @message
+    </div>
+}
+
+
+<p>
+    <a asp-controller="Owners" asp-action="Create">
+        Add Owner
+    </a>
+</p>
+
+
+<table>
+    <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Phone Number</th>
+            <th>Email</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var owner in Model)
+        {
+            <tr>
+                <td>@owner.FirstName</td>
+                <td>@owner.LastName</td>
+                <td>@owner.PhoneNumber</td>
+                <td>@owner.Email</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@owner.Id">Details</a>
+                    <a asp-action="Edit" asp-route-id="@owner.Id">Edit</a>
+                </td>
+            </tr>
+        }
+
+        @if (!Model.Any())
+        {
+            <tr>
+                <td>
+                    No owners registered yet
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
