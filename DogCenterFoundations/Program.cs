@@ -1,3 +1,4 @@
+using DogCenter.Services;
 using DogCenterFoundations.Data;
 using DogCenterFoundations.Services;
 using Microsoft.AspNetCore.Identity;
@@ -23,6 +24,7 @@ namespace DogCenterFoundations
             builder.Services.AddScoped<IOwnerService, OwnerService>();
             builder.Services.AddScoped<IDogService, DogService>();
             builder.Services.AddScoped<IMedicalRecordService, MedicalRecordService>();
+            builder.Services.AddScoped<IServiceService, ServiceService>();
 
             var app = builder.Build();
 
