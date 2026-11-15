@@ -22,6 +22,7 @@ namespace DogCenterFoundations
             builder.Services.AddControllersWithViews();
             builder.Services.AddScoped<IOwnerService, OwnerService>();
             builder.Services.AddScoped<IDogService, DogService>();
+            builder.Services.AddScoped<IMedicalRecordService, MedicalRecordService>();
 
             var app = builder.Build();
 
