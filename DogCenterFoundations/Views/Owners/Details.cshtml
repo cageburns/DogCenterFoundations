@@ -10,7 +10,7 @@
 	View the owner's registered contact information and notes. Note you cannot delete any owners from the company records for legal reasons. If an owner is no longer using DogCenter's services, you can edit their information to reflect that.
 </p>
 
-
+<div class="bg-white p-4 rounded mt-3" style="max-width: 650px;">
 <dl class="row">
     <dt class="col-sm-3">First Name</dt>
     <dd class="col-sm-9">@Model.FirstName</dd>
@@ -27,7 +27,7 @@
     <dt class="col-sm-3">Notes</dt>
     <dd class="col-sm-9">@Model.Notes</dd>
 </dl>
-
+</div>
 
 <h3 class="mt-4">Owned Dogs</h3>
 
@@ -40,8 +40,7 @@
                 <a asp-controller="Dogs"
                    asp-action="Details"
                    asp-route-id="@dog.Id">
-                    @dog.Name
-                </a>
+                    @dog.Name</a>
 
                 <span class="text-muted">(@dog.Breed)</span>
             </li>
