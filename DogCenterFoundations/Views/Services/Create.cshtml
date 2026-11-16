@@ -1,0 +1,57 @@
+﻿@model DogCenterFoundations.Models.ViewModels.ServiceCreateViewModel
+
+@{
+    ViewData["Title"] = "Add Service";
+}
+
+<h1>Add Service</h1>
+
+<form asp-action="Create" method="post">
+
+    <div asp-validation-summary="ModelOnly"></div>
+
+    <div>
+        <label asp-for="ServiceName">Service Name</label>
+        <input asp-for="ServiceName"/>
+        <span asp-validation-for="ServiceName"></span>
+    </div>
+
+    <div>
+        <label asp-for="ServiceType">Service Type</label>
+        <select asp-for="ServiceType">
+            <option value="">Select a service type</option>
+            <option value="School">Training and Education</option>
+            <option value="Salon">Grooming</option>
+            <option value="Hotel">Care and Stay</option>
+            <option value="Misc">More</option>
+        </select>
+        <span asp-validation-for="ServiceType"></span>
+    </div>
+
+    <div>
+        <label asp-for="Price">Price</label>
+        <input asp-for="Price" type="number"/>
+        <span asp-validation-for="Price"></span>
+    </div>
+
+    <div>
+        <label asp-for="Description">Description</label>
+        <textarea asp-for="Description" ></textarea>
+        <span asp-validation-for="Description"></span>
+    </div>
+
+    <div>
+        <button type="submit">
+            Save
+        </button>
+
+        <a asp-action="Index">
+            Cancel
+        </a>
+    </div>
+
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

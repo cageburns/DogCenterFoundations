@@ -1,0 +1,46 @@
+﻿@model DogCenterFoundations.Models.ViewModels.ServiceDetailsViewModel
+
+@{
+    ViewData["Title"] = Model.ServiceName;
+}
+
+<h1>@Model.ServiceName</h1>
+
+@if (TempData["SuccessMessage"] is string message)
+{
+    <div >
+        @message
+    </div>
+}
+
+<p>@Model.Description</p>
+
+<p>
+    <strong>Price</strong> €@Model.Price.ToString("F2")
+</p>
+
+<p>
+    VIP members receive a X% discount
+</p>
+
+@if (User.Identity?.IsAuthenticated == true)
+{
+    <div>
+        <a asp-action="Edit"
+           asp-route-id="@Model.Id">
+            Edit
+        </a>
+                
+    </div>
+            
+    
+    <form asp-action="Delete"
+          asp-route-id="@Model.Id"
+          method="post"
+          onsubmit="return confirm('Are you sure');">
+
+        <button type="submit">Delete</button>
+    </form>
+
+}
+

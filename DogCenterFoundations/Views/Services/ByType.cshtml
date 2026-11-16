@@ -1,0 +1,35 @@
+﻿@model IEnumerable<DogCenterFoundations.Models.ViewModels.ServiceListViewModel>
+
+@{
+    ViewData["Title"] = "Services";
+}
+
+<h1>Find out more about</h1>
+
+@if (TempData["SuccessMessage"] is string message)
+{
+    <div>
+        @message
+    </div>
+}
+
+@if (Model.Any())
+{
+    <div>
+        @foreach (var service in Model)
+        {
+            <a asp-action="Details"
+               asp-route-id="@service.Id">
+                @service.ServiceName
+            </a>
+        }
+    </div>
+}
+else
+{
+    <p>We're working on expanding</p>
+}
+
+<a asp-action="Index">
+    All Categories
+</a>

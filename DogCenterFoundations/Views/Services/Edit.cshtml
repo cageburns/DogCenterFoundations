@@ -1,0 +1,54 @@
+﻿@model DogCenterFoundations.Models.ViewModels.ServiceEditViewModel
+
+@{
+    ViewData["Title"] = $"Edit {Model.ServiceName}";
+}
+
+<h1>Edit @Model.ServiceName</h1>
+
+<form asp-action="Edit" asp-route-id="@Model.Id" method="post">
+
+    <input type="hidden" asp-for="Id" />
+
+    <div asp-validation-summary="ModelOnly"></div>
+
+    <div>
+        <label asp-for="ServiceName">Service Name</label>
+        <input asp-for="ServiceName"/>
+        <span asp-validation-for="ServiceName"></span>
+    </div>
+
+    <div>
+        <label asp-for="ServiceType">Service Type</label>
+        <select asp-for="ServiceType">
+            <option value="School">Training and Education</option>
+            <option value="Salon">Grooming</option>
+            <option value="Hotel">Care and Stay</option>
+            <option value="Misc">More</option>
+        </select>
+        <span asp-validation-for="ServiceType" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label asp-for="Price">Price (€)</label>
+        <input asp-for="Price" />
+        <span asp-validation-for="Price"></span>
+    </div>
+
+    <div>
+        <label asp-for="Description">Description</label>
+        <textarea asp-for="Description"></textarea>
+        <span asp-validation-for="Description"></span>
+    </div>
+
+    <div>
+        <button type="submit">
+            Save
+        </button>
+
+        <a asp-action="Details"
+           asp-route-id="@Model.Id">
+            Cancel
+        </a>
+    </div>
+</form>

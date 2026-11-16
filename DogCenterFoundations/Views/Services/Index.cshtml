@@ -1,0 +1,26 @@
+﻿@{
+    ViewData["Title"] = "Our Services";
+}
+
+<h1>Our Services</h1>
+
+<p>Placeholder</p>
+
+<div>
+    <a asp-action="ByType" asp-route-serviceType="School">Training and Education</a>
+
+    <a asp-action="ByType" asp-route-serviceType="Salon">Grooming</a>
+
+    <a asp-action="ByType" asp-route-serviceType="Hotel">Care and Stay</a>
+
+    <a asp-action="ByType" asp-route-serviceType="Misc">More</a>
+</div>
+
+@if (User.Identity?.IsAuthenticated == true)
+{
+    <div>
+        <a asp-action="Create">
+            Add Service
+        </a>
+    </div>
+}
