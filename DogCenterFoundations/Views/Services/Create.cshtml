@@ -8,44 +8,44 @@
 
 <form asp-action="Create" method="post">
 
-    <div asp-validation-summary="ModelOnly"></div>
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-    <div>
-        <label asp-for="ServiceName">Service Name</label>
-        <input asp-for="ServiceName"/>
-        <span asp-validation-for="ServiceName"></span>
+    <div class="mb-3">
+        <label asp-for="ServiceName" class="form-label">Service Name</label>
+        <input asp-for="ServiceName" class="form-control" />
+        <span asp-validation-for="ServiceName" class="text-danger"></span>
     </div>
 
-    <div>
-        <label asp-for="ServiceType">Service Type</label>
-        <select asp-for="ServiceType">
+    <div class="mb-3">
+        <label asp-for="ServiceType" class="form-label">Service Type</label>
+        <select asp-for="ServiceType" class="form-select">
             <option value="">Select a service type</option>
             <option value="School">Training and Education</option>
             <option value="Salon">Grooming</option>
             <option value="Hotel">Care and Stay</option>
             <option value="Misc">More</option>
         </select>
-        <span asp-validation-for="ServiceType"></span>
+        <span asp-validation-for="ServiceType" class="text-danger"></span>
     </div>
 
-    <div>
-        <label asp-for="Price">Price</label>
-        <input asp-for="Price" type="number"/>
-        <span asp-validation-for="Price"></span>
+    <div class="mb-3">
+        <label asp-for="Price" class="form-label">Price (€)</label>
+        <input asp-for="Price" class="form-control" type="number" step="0.01" />
+        <span asp-validation-for="Price" class="text-danger"></span>
     </div>
 
-    <div>
-        <label asp-for="Description">Description</label>
-        <textarea asp-for="Description" ></textarea>
-        <span asp-validation-for="Description"></span>
+    <div class="mb-3">
+        <label asp-for="Description" class="form-label">Description</label>
+        <textarea asp-for="Description" class="form-control" rows="6"></textarea>
+        <span asp-validation-for="Description" class="text-danger"></span>
     </div>
 
-    <div>
-        <button type="submit">
+    <div class="d-flex gap-2">
+        <button type="submit" class="btn btn-primary">
             Save
         </button>
 
-        <a asp-action="Index">
+        <a asp-action="Index" class="btn btn-secondary">
             Cancel
         </a>
     </div>

@@ -6,50 +6,50 @@
 
 <h1>Add New Owner</h1>
 
-<p>
-    Enter the owner's contact information
+<p class="text-muted">
+	Enter the owner's name and contact information to register them. You will only be able to register a dog after you've registered the owner.'
 </p>
 
 
 <form asp-action="Create" method="post">
-    <div asp-validation-summary="ModelOnly"></div>
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-    <div>
-        <label asp-for="FirstName"></label>
-        <input asp-for="FirstName"/>
-        <span asp-validation-for="FirstName"></span>
+    <div class="mb-3">
+        <label asp-for="FirstName" class="form-label"></label>
+        <input asp-for="FirstName" class="form-control" />
+        <span asp-validation-for="FirstName" class="text-danger"></span>
     </div>
 
-    <div>
-        <label asp-for="LastName"></label>
-        <input asp-for="LastName"/>
-        <span asp-validation-for="LastName"></span>
+    <div class="mb-3">
+        <label asp-for="LastName" class="form-label"></label>
+        <input asp-for="LastName" class="form-control" />
+        <span asp-validation-for="LastName" class="text-danger"></span>
     </div>
 
-    <div>
-        <label asp-for="PhoneNumber"></label>
-        <input asp-for="PhoneNumber"/>
-        <span asp-validation-for="PhoneNumber"></span>
+    <div class="mb-3">
+        <label asp-for="PhoneNumber" class="form-label"></label>
+        <input asp-for="PhoneNumber" class="form-control" />
+        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
     </div>
 
-    <div>
-        <label asp-for="Email"></label>
-        <input asp-for="Email"/>
-        <span asp-validation-for="Email"></span>
+    <div class="mb-3">
+        <label asp-for="Email" class="form-label"></label>
+        <input asp-for="Email" class="form-control" />
+        <span asp-validation-for="Email" class="text-danger"></span>
     </div>
 
-    <div>
-        <label asp-for="Notes"></label>
-        <textarea asp-for="Notes"></textarea>
-        <span asp-validation-for="Notes"></span>
+    <div class="mb-3">
+        <label asp-for="Notes" class="form-label"></label>
+        <textarea asp-for="Notes" class="form-control" rows="4"></textarea>
+        <span asp-validation-for="Notes" class="text-danger"></span>
     </div>
 
 
-    <button type="submit">
-        Save Owner
+    <button type="submit" class="btn btn-primary me-2">
+        Save
     </button>
 
-    <a asp-action="Index">
+    <a asp-action="Index" class="btn btn-secondary">
         Cancel
     </a>
 </form>

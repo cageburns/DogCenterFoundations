@@ -9,7 +9,7 @@ html {
 }
 
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #7af048;
 }
 
 html {
@@ -29,3 +29,71 @@ body {
 .form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
   text-align: start;
 }
+
+body {
+    background-image: url('/images/HomeBG.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: #000000;
+}
+
+
+
+:root {
+    --dc-sage: rgba(220, 234, 211, 0.88);
+    --dc-green: #315b40;
+    --dc-brown: #754830;
+}
+
+.card, .list-group-item, .modal-content,
+.bg-white, .bg-light {
+    background-color: var(--dc-sage) !important;
+    border-color: #aabca4;
+}
+
+.table {
+    --bs-table-bg: var(--dc-sage);
+    --bs-table-border-color: #aabca4;
+}
+
+.btn-primary {
+    --bs-btn-bg: var(--dc-green);
+    --bs-btn-border-color: var(--dc-green);
+    --bs-btn-hover-bg: #234630;
+    --bs-btn-hover-border-color: #234630;
+    --bs-btn-active-bg: #234630;
+    --bs-btn-active-border-color: #234630;
+}
+
+.btn-danger {
+    --bs-btn-bg: var(--dc-brown);
+    --bs-btn-border-color: var(--dc-brown);
+    --bs-btn-hover-bg: #593622;
+    --bs-btn-hover-border-color: #593622;
+    --bs-btn-active-bg: #593622;
+    --bs-btn-active-border-color: #593622;
+}
+
+.btn-outline-primary {
+    --bs-btn-color: var(--dc-green);
+    --bs-btn-border-color: var(--dc-green);
+    --bs-btn-hover-bg: var(--dc-green);
+    --bs-btn-hover-border-color: var(--dc-green);
+}
+
+.btn-outline-danger {
+    --bs-btn-color: var(--dc-brown);
+    --bs-btn-border-color: var(--dc-brown);
+    --bs-btn-hover-bg: var(--dc-brown);
+    --bs-btn-hover-border-color: var(--dc-brown);
+}
+
+a:not(.btn):not(.nav-link):not(.navbar-brand) {
+    color: #315b40;
+}
+
+    a:not(.btn):not(.nav-link):not(.navbar-brand):hover {
+        color: #234630;
+    }

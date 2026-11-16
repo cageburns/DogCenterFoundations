@@ -6,46 +6,46 @@
 
 <h1>Register New Dog</h1>
 
-<p>
-    Enter the dog's information
+<p class ="text-muted">
+	Enter the dog's information, select the owner that you registered previously, and add all other relevant details. You can add medical records after the dog has been registered.
 </p>
 
 <form asp-action="Create" method="post">
-    <div asp-validation-summary="ModelOnly"></div>
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-    <div>
-        <label asp-for="Name"></label>
-        <input asp-for="Name" />
-        <span asp-validation-for="Name"></span>
+    <div class="mb-3">
+        <label asp-for="Name" class="form-label"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
     </div>
 
-    <div>
-        <label asp-for="Breed"></label>
-        <input asp-for="Breed"/>
-        <span asp-validation-for="Breed"></span>
+    <div class="mb-3">
+        <label asp-for="Breed" class="form-label"></label>
+        <input asp-for="Breed" class="form-control" />
+        <span asp-validation-for="Breed" class="text-danger"></span>
     </div>
 
-    <div>
-        <label asp-for="Birthday"></label>
-        <input asp-for="Birthday" type="date" />
-        <span asp-validation-for="Birthday"></span>
+    <div class="mb-3">
+        <label asp-for="Birthday" class="form-label"></label>
+        <input asp-for="Birthday" type="date" class="form-control" />
+        <span asp-validation-for="Birthday" class="text-danger"></span>
     </div>
 
-    <div>
-        <label asp-for="MicrochipId"></label>
-        <input asp-for="MicrochipId"/>
-        <span asp-validation-for="MicrochipId"></span>
+    <div class="mb-3">
+        <label asp-for="MicrochipId" class="form-label"></label>
+        <input asp-for="MicrochipId" class="form-control" />
+        <span asp-validation-for="MicrochipId" class="text-danger"></span>
     </div>
 
-    <div>
-        <input asp-for="IsVip"/>
-        <label asp-for="IsVip">VIP</label>
+    <div class="mb-3 form-check">
+        <input asp-for="IsVip" class="form-check-input" />
+        <label asp-for="IsVip" class="form-check-label">VIP</label>
     </div>
     
-    <div>
-        <label asp-for="OwnerId">Owner</label>
+    <div class="mb-3">
+        <label asp-for="OwnerId" class="form-label">Owner</label>
 
-        <select asp-for="OwnerId">
+        <select asp-for="OwnerId" class="form-select">
             <option value="">Select an owner</option>
 
             @foreach (var owner in Model.Owners)
@@ -56,21 +56,21 @@
             }
         </select>
 
-        <span asp-validation-for="OwnerId"></span>
+        <span asp-validation-for="OwnerId" class="text-danger"></span>
     </div>
 
     <div class="mb-3">
-        <label asp-for="Notes">Notes</label>
-        <textarea asp-for="Notes"></textarea>
-        <span asp-validation-for="Notes"></span>
+        <label asp-for="Notes" class="form-label"></label>
+        <textarea asp-for="Notes" class="form-control" rows="4"></textarea>
+        <span asp-validation-for="Notes" class="text-danger"></span>
     </div>
         
-    <div>
-        <button type="submit">
+    <div class="mt-4">
+        <button type="submit" class="btn btn-primary me-2">
             Save
         </button>
 
-        <a asp-action="Index">
+        <a asp-action="Index" class="btn btn-secondary">
             Cancel
         </a>
     </div>

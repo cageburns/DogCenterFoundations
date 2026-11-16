@@ -6,8 +6,8 @@
 
 <h1>Edit Medical Record</h1>
 
-<p>
-    Update the medical record
+<p class="text-muted">
+    Update the medical record information. You are not able to update the record date or backdate it. Records must be created on the date of the visit. Editing the record is only allowed so relevant information can be added.
 </p>
 
 
@@ -15,48 +15,50 @@
     <input type="hidden" asp-for="Id" />
     <input type="hidden" asp-for="DogId" />
 
-    <div asp-validation-summary="ModelOnly"></div>
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-    <div>
-        <label asp-for="Name"></label>
-        <input asp-for="Name"/>
-        <span asp-validation-for="Name"></span>
+    <div class="mb-3">
+        <label asp-for="Name" class="form-label"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
     </div>
 
-    <div>
-        <label asp-for="RecordType"></label>
-        <input asp-for="RecordType"/>
-        <span asp-validation-for="RecordType"></span>
+    <div class="mb-3">
+        <label asp-for="RecordType" class="form-label"></label>
+        <input asp-for="RecordType" class="form-control" />
+        <span asp-validation-for="RecordType" class="text-danger"></span>
     </div>
 
-    <div>
-        <label asp-for="Brand"></label>
-        <input asp-for="Brand"/>
-        <span asp-validation-for="Brand"></span>
+    <div class="mb-3">
+        <label asp-for="Brand" class="form-label"></label>
+        <input asp-for="Brand" class="form-control" />
+        <span asp-validation-for="Brand" class="text-danger"></span>
     </div>
 
-    <div>
-        <label asp-for="NextDueDate"></label>
-        <input asp-for="NextDueDate" type="date"/>
-        <span asp-validation-for="NextDueDate"></span>
+    <div class="mb-3">
+        <label asp-for="NextDueDate" class="form-label"></label>
+        <input asp-for="NextDueDate" type="date" class="form-control" />
+        <span asp-validation-for="NextDueDate" class="text-danger"></span>
     </div>
 
-    <div>
-        <label asp-for="Notes"></label>
-        <textarea asp-for="Notes"></textarea>
-        <span asp-validation-for="Notes"></span>
+    <div class="mb-3">
+        <label asp-for="Notes" class="form-label"></label>
+        <textarea asp-for="Notes" class="form-control" rows="4"></textarea>
+        <span asp-validation-for="Notes" class="text-danger"></span>
     </div>
     
-    <div>
-        <button type="submit">
+    <div class="mt-4">
+        <button type="submit" class="btn btn-primary me-2">
             Save
         </button>
 
         <a asp-action="Details"
-           asp-route-id="@Model.Id">
+           asp-route-id="@Model.Id"
+           class="btn btn-secondary">
             Cancel
         </a>
     </div>
+
 </form>
         
 

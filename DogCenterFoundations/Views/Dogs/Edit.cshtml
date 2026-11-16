@@ -6,49 +6,49 @@
 
 <h1>Edit Dog</h1>
 
-<p>
-    Update the dog
+<p class="text-muted">
+    Update the dog's information with any relevant details.
 </p>
 
 
 <form asp-action="Edit" asp-route-id="@Model.Id" method="post">
     <input type="hidden" asp-for="Id" />
 
-    <div asp-validation-summary="ModelOnly"></div>
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-    <div>
-        <label asp-for="Name"></label>
-        <input asp-for="Name"/>
-        <span asp-validation-for="Name"></span>
+    <div class="mb-3">
+        <label asp-for="Name" class="form-label"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
     </div>
 
-    <div>
-        <label asp-for="Breed"></label>
-        <input asp-for="Breed"/>
-        <span asp-validation-for="Breed"></span>
+    <div class="mb-3">
+        <label asp-for="Breed" class="form-label"></label>
+        <input asp-for="Breed" class="form-control" />
+        <span asp-validation-for="Breed" class="text-danger"></span>
     </div>
 
-    <div>
-        <label asp-for="Birthday"></label>
-        <input asp-for="Birthday" type="date"/>
-        <span asp-validation-for="Birthday"></span>
+    <div class="mb-3">
+        <label asp-for="Birthday" class="form-label"></label>
+        <input asp-for="Birthday" type="date" class="form-control" />
+        <span asp-validation-for="Birthday" class="text-danger"></span>
     </div>
 
-    <div>
-        <label asp-for="MicrochipId"></label>
-        <input asp-for="MicrochipId"/>
-        <span asp-validation-for="MicrochipId"></span>
+    <div class="mb-3">
+        <label asp-for="MicrochipId" class="form-label"></label>
+        <input asp-for="MicrochipId" class="form-control" />
+        <span asp-validation-for="MicrochipId" class="text-danger"></span>
     </div>
 
-    <div>
-        <input asp-for="IsVip"/>
-        <label asp-for="IsVip">VIP</label>
+    <div class="mb-3 form-check">
+        <input asp-for="IsVip" class="form-check-input" />
+        <label asp-for="IsVip" class="form-check-label">VIP</label>
     </div>
 
-    <div>
-        <label asp-for="OwnerId">Owner</label>
+    <div class="mb-3">
+        <label asp-for="OwnerId" class="form-label">Owner</label>
 
-        <select asp-for="OwnerId">
+        <select asp-for="OwnerId" class="form-select">
             <option value="">Select an owner</option>
 
             @foreach (var owner in Model.Owners)
@@ -59,21 +59,21 @@
             }
         </select>
 
-        <span asp-validation-for="OwnerId"></span>
+        <span asp-validation-for="OwnerId" class="text-danger"></span>
     </div>
 
-    <div>
-        <label asp-for="Notes"></label>
-        <textarea asp-for="Notes"></textarea>
-        <span asp-validation-for="Notes"></span>
+    <div class="mb-3">
+        <label asp-for="Notes" class="form-label"></label>
+        <textarea asp-for="Notes" class="form-control" rows="4"></textarea>
+        <span asp-validation-for="Notes" class="text-danger"></span>
     </div>
 
-    <div>
-        <button type="submit">
+    <div class="mt-4">
+        <button type="submit" class="btn btn-primary me-2">
             Save
         </button>
 
-        <a asp-action="Details" asp-route-id="@Model.Id">
+        <a asp-action="Details" asp-route-id="@Model.Id" class="btn btn-secondary">
             Cancel
         </a>
     </div>
@@ -82,4 +82,3 @@
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
 }
-

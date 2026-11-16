@@ -6,27 +6,27 @@
 
 <h1>Owners</h1>
 
-<p>
-    Instructions
+<p class="text-muted">
+	View and manage all individuals using DogCenter's services. You can add new owners, edit their information, and view the dogs they own.
 </p>
 
 
 @if (TempData["SuccessMessage"] is string message)
 {
-    <div>
+    <div class="alert alert-success" role="alert">
         @message
     </div>
 }
 
 
 <p>
-    <a asp-controller="Owners" asp-action="Create">
+    <a asp-controller="Owners" asp-action="Create" class="btn btn-primary">
         Add Owner
     </a>
 </p>
 
 
-<table>
+<table class="table table-striped">
     <thead>
         <tr>
             <th>First Name</th>
@@ -45,7 +45,7 @@
                 <td>@owner.PhoneNumber</td>
                 <td>@owner.Email</td>
                 <td>
-                    <a asp-action="Details" asp-route-id="@owner.Id">Details</a>
+                    <a asp-action="Details" asp-route-id="@owner.Id" class="me-2">Details</a>
                     <a asp-action="Edit" asp-route-id="@owner.Id">Edit</a>
                 </td>
             </tr>
@@ -54,8 +54,8 @@
         @if (!Model.Any())
         {
             <tr>
-                <td>
-                    No owners registered yet
+                <td colspan="5" class="text-center text-muted">
+                    No owners registered yet.
                 </td>
             </tr>
         }

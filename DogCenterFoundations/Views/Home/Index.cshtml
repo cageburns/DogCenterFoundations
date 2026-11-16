@@ -1,8 +1,41 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Home";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+
+<div class="row align-items-center py-5">
+    <div class="col-md-6">
+        <h1>Where Happy Dogs Thrive</h1>
+        <p class="lead">
+            Welcome to DogCenter, where love, knowledge, and dedication come together to help dogs live their happiest, healthiest lives.
+        </p>
+    </div>
+
+    <div class="col-md-6">
+        
+        <img src="~/images/HomeImg.png" class="img-fluid rounded" />
+
+    </div>
+</div>
+
+
+<a asp-controller="Services" asp-action="Index" class="d-block bg-dark bg-opacity-25 text-dark text-center text-decoration-none p-5 my-5 rounded">
+
+    <h2>Discover Our Services</h2>
+    <p>
+        From training and grooming to care and companionship, explore everything we offer for your four-legged family member.
+    </p>
+    <span class="btn btn-light">Explore Services</span>
+</a>
+
+
+<div class="text-center py-5">
+    <h2>Built on Love, Guided by Experience</h2>
+    <p class="lead">
+        What began as one person's lifelong dream grew into a place dedicated to helping dogs and their humans build happier lives together.
+    </p>
+
+    <a asp-controller="Home" asp-action="About" class="btn btn-outline-dark">
+        Discover Our Story
+    </a>
 </div>

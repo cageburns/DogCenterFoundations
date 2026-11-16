@@ -2,25 +2,45 @@
     ViewData["Title"] = "Our Services";
 }
 
-<h1>Our Services</h1>
+<h1 class="mb-4">Our Services</h1>
 
-<p>Placeholder</p>
+<p>Browse the services in this category below and don't forget - we're always expanding!</p>
 
-<div>
-    <a asp-action="ByType" asp-route-serviceType="School">Training and Education</a>
+<div class="row row-cols-1 row-cols-md-2 g-3 mx-auto" style="max-width: 750px;">
 
-    <a asp-action="ByType" asp-route-serviceType="Salon">Grooming</a>
+    <a asp-action="ByType" asp-route-serviceType="School" class="position-relative">
+        <img src="~/images/services/Train.png" class="w-100 rounded" alt="Training" />
+        <span class="position-absolute top-50 start-50 translate-middle bg-light bg-opacity-75 text-dark fs-4 fw-bold text-center p-2 rounded">
+            Training and Education
+        </span>
+    </a>
 
-    <a asp-action="ByType" asp-route-serviceType="Hotel">Care and Stay</a>
+    <a asp-action="ByType" asp-route-serviceType="Salon" class="position-relative">
+        <img src="~/images/services/Groom.png" class="w-100 rounded" alt="Grooming" />
+        <span class="position-absolute top-50 start-50 translate-middle bg-light bg-opacity-75 text-dark fs-4 fw-bold text-center p-2 rounded">
+            Grooming
+        </span>
+    </a>
 
-    <a asp-action="ByType" asp-route-serviceType="Misc">More</a>
+    <a asp-action="ByType" asp-route-serviceType="Hotel" class="position-relative">
+        <img src="~/images/services/Care.png" class="w-100 rounded" alt="Care and Stay" />
+        <span class="position-absolute top-50 start-50 translate-middle bg-light bg-opacity-75 text-dark fs-4 fw-bold text-center p-2 rounded">
+            Care and Stay
+        </span>
+    </a>
+
+    <a asp-action="ByType" asp-route-serviceType="Misc" class="position-relative">
+        <img src="~/images/services/More.png" class="w-100 rounded" alt="More" />
+        <span class="position-absolute top-50 start-50 translate-middle bg-light bg-opacity-75 text-dark fs-4 fw-bold text-center p-2 rounded">
+            More
+        </span>
+    </a>
 </div>
+
 
 @if (User.Identity?.IsAuthenticated == true)
 {
-    <div>
-        <a asp-action="Create">
-            Add Service
-        </a>
+    <div class="mt-4">
+        <a asp-action="Create" class="btn btn-primary">Add Service</a>
     </div>
 }

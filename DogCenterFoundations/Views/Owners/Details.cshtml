@@ -6,59 +6,61 @@
 
 <h1>Owner Details</h1>
 
-<p>
-    View the owner
+<p class="text-muted">
+	View the owner's registered contact information and notes. Note you cannot delete any owners from the company records for legal reasons. If an owner is no longer using DogCenter's services, you can edit their information to reflect that.
 </p>
 
 
-<dl>
-    <dt>First Name</dt>
-    <dd>@Model.FirstName</dd>
+<dl class="row">
+    <dt class="col-sm-3">First Name</dt>
+    <dd class="col-sm-9">@Model.FirstName</dd>
 
-    <dt>Last Name</dt>
-    <dd>@Model.LastName</dd>
+    <dt class="col-sm-3">Last Name</dt>
+    <dd class="col-sm-9">@Model.LastName</dd>
 
-    <dt>Phone Number</dt>
-    <dd>@Model.PhoneNumber</dd>
+    <dt class="col-sm-3">Phone Number</dt>
+    <dd class="col-sm-9">@Model.PhoneNumber</dd>
 
-    <dt>Email</dt>
-    <dd>@Model.Email</dd>
+    <dt class="col-sm-3">Email</dt>
+    <dd class="col-sm-9">@Model.Email</dd>
 
-    <dt>Notes</dt>
-    <dd>@Model.Notes</dd>
+    <dt class="col-sm-3">Notes</dt>
+    <dd class="col-sm-9">@Model.Notes</dd>
 </dl>
 
 
-<h3>Owned Dogs</h3>
+<h3 class="mt-4">Owned Dogs</h3>
 
 @if (Model.Dogs.Any())
 {
-    <ul>
+    <ul class="list-group mb-4">
         @foreach (var dog in Model.Dogs)
         {
-            <li>
+            <li class="list-group-item">
                 <a asp-controller="Dogs"
                    asp-action="Details"
                    asp-route-id="@dog.Id">
                     @dog.Name
                 </a>
 
-                <span>(@dog.Breed)</span>
+                <span class="text-muted">(@dog.Breed)</span>
             </li>
         }
     </ul>
 }
 else
 {
-    <p>No dogs registered.</p>
+    <p class="text-muted">
+        No dogs registered for this owner.
+    </p>
 }
 
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">
+<div class="mt-4">
+    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary me-2">
         Edit
     </a>
 
-    <a asp-action="Index">
-        Back
+    <a asp-action="Index" class="btn btn-secondary">
+        Back to Owner List
     </a>
 </div>

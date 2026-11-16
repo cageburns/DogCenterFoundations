@@ -6,39 +6,32 @@
 
 <h1>Dog Details</h1>
 
-@if (TempData["SuccessMessage"] is string message)
-{
-    <div role="alert">
-        @message
-    </div>
-}
-
-<p>
-    View dog information
+<p class="text-muted">
+    View dog information and owner details.
 </p>
 
 
-<dl>
-    <dt>Name</dt>
+<dl class="row">
+    <dt class="col-sm-3">Name</dt>
     <dd class="col-sm-9">@Model.Name</dd>
 
-    <dt>Breed</dt>
-    <dd>@Model.Breed</dd>
+    <dt class="col-sm-3">Breed</dt>
+    <dd class="col-sm-9">@Model.Breed</dd>
 
-    <dt>Birthday</dt>
-    <dd>@Model.Birthday.ToString("dd MMM yyyy")</dd>
+    <dt class="col-sm-3">Birthday</dt>
+    <dd class="col-sm-9">@Model.Birthday.ToString("dd MMM yyyy")</dd>
 
-    <dt>Microchip ID</dt>
-    <dd>@Model.MicrochipId</dd>
+    <dt class="col-sm-3">Microchip ID</dt>
+    <dd class="col-sm-9">@Model.MicrochipId</dd>
 
-    <dt>Registration Date</dt>
-    <dd>@Model.RegistrationDate.ToString("dd MMM yyyy")</dd>
+    <dt class="col-sm-3">Registration Date</dt>
+    <dd class="col-sm-9">@Model.RegistrationDate.ToString("dd MMM yyyy")</dd>
 
-    <dt>VIP Status</dt>
-    <dd>@(Model.IsVip ? "Yes" : "No")</dd>
+    <dt class="col-sm-3">VIP Status</dt>
+    <dd class="col-sm-9">@(Model.IsVip ? "Yes" : "No")</dd>
 
-    <dt>Owner</dt>
-    <dd>
+    <dt class="col-sm-3">Owner</dt>
+    <dd class="col-sm-9">
         <a asp-controller="Owners"
            asp-action="Details"
            asp-route-id="@Model.OwnerId">
@@ -46,54 +39,99 @@
         </a>
     </dd>
 
-    <dt>Notes</dt>
-    <dd>@Model.Notes</dd>
+    <dt class="col-sm-3">Notes</dt>
+    <dd class="col-sm-9">@Model.Notes</dd>
 </dl>
 
 
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">
+<div class="mt-4 d-flex align-items-center flex-wrap gap-2">
+    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">
         Edit
     </a>
 
-    <a asp-action="Index">
+    <a asp-action="Index" class="btn btn-secondary">
         Back to Dog List
-    </a>   
+    </a>
+
+    <button type="button"
+            class="btn btn-danger"
+            data-bs-toggle="modal"
+            data-bs-target="#deleteDogModal">
+        Delete
+    </button>
 </div>
 
 
+<div class="modal fade" id="deleteDogModal" tabindex="-1"
+     aria-labelledby="deleteDogModalLabel" aria-hidden="true">
 
-<form asp-action="Delete"
-      asp-route-id="@Model.Id"
-      method="post"
-      onsubmit="return confirm('Are you sure you want to delete');">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
 
-    <button type="submit">Delete</button>
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteDogModalLabel">
+                    Delete
+                </h5>
 
-</form>
+                <button type="button" class="btn-close"
+                        data-bs-dismiss="modal" aria-label="Close">
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <p>
+                    Are you sure you want to delete the
+                    <strong>@Model.Breed @Model.Name</strong>?
+                </p>
+
+                <p class="text-danger">
+                    Warning: This will also permanently delete all
+                    associated medical records.
+                </p>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary"
+                        data-bs-dismiss="modal">
+                    Cancel
+                </button>
+
+                <form asp-action="Delete"
+                      asp-route-id="@Model.Id"
+                      method="post">
+                    <button type="submit" class="btn btn-danger">
+                        Confirm
+                    </button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
 
 
-<h3>Medical Records</h3>
+<h3 class="mt-4">Medical Records</h3>
 
 <p>
     <a asp-controller="MedicalRecords"
        asp-action="Create"
-       asp-route-dogId="@Model.Id">
-        Add
+       asp-route-dogId="@Model.Id"
+       class="btn btn-primary">
+        Add Medical Record
     </a>
 </p>
 
 @if (Model.MedicalRecords.Any())
 {
-    <ul>
+    <ul class="list-group">
         @foreach (var record in Model.MedicalRecords)
         {
-            <li>
+            <li class="list-group-item">
                 <a asp-controller="MedicalRecords"
                    asp-action="Details"
                    asp-route-id="@record.Id">@record.Name</a>
 
-                <span>
+                <span class="text-muted">
                     (@record.Date.ToString("dd MMM yyyy"))
                 </span>
             </li>
@@ -102,7 +140,7 @@
 }
 else
 {
-    <p>
-        No medical records
+    <p class="text-muted">
+        No medical records registered for this dog.
     </p>
 }
