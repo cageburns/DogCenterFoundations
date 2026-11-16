@@ -42,7 +42,7 @@ body {
 
 
 :root {
-    --dc-sage: rgba(220, 234, 211, 0.88);
+    --dc-sage: rgba(220, 234, 211, 0.25);
     --dc-green: #315b40;
     --dc-brown: #754830;
 }
