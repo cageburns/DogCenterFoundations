@@ -62,6 +62,20 @@ namespace DogCenterFoundations.Data.Migrations
                     b.HasIndex("OwnerId");
 
                     b.ToTable("Dogs");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Birthday = new DateTime(2023, 3, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Breed = "German Shepherd",
+                            IsVip = true,
+                            MicrochipId = "276098100123456",
+                            Name = "Onyx",
+                            Notes = "Friendly, energetic, and enthusiastic about training. Loves treats. Crazy about fetch.",
+                            OwnerId = 1,
+                            RegistrationDate = new DateTime(2025, 6, 10, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        });
                 });
 
             modelBuilder.Entity("DogCenterFoundations.Models.Entities.MedicalRecord", b =>
@@ -100,6 +114,19 @@ namespace DogCenterFoundations.Data.Migrations
                     b.HasIndex("DogId");
 
                     b.ToTable("MedicalRecords");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Brand = "Rabisin",
+                            Date = new DateTime(2025, 5, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DogId = 1,
+                            Name = "Rabies Vaccination",
+                            NextDueDate = new DateTime(2028, 5, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Notes = "Routine vaccination completed without complications. Recommended supplements for joint health.",
+                            RecordType = "Vaccination"
+                        });
                 });
 
             modelBuilder.Entity("DogCenterFoundations.Models.Entities.Owner", b =>
@@ -132,6 +159,17 @@ namespace DogCenterFoundations.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Owners");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Email = "elena.fischer@example.com",
+                            FirstName = "Elena",
+                            LastName = "Fischer",
+                            Notes = "Responsible owner. Actively involved in training and socialization. No outstanding payments.",
+                            PhoneNumber = "+4935900000000"
+                        });
                 });
 
             modelBuilder.Entity("DogCenterFoundations.Models.Entities.Service", b =>
@@ -161,6 +199,40 @@ namespace DogCenterFoundations.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Services");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Description = "10 group lessons for puppies up to 8 months. Fixed schedule, covering basic obedience, socialization, and building a strong relationship with your puppy.",
+                            Price = 550m,
+                            ServiceName = "Puppy Group Training",
+                            ServiceType = "School"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Description = "Professional nail trimming to keep your dog's paws healthy and comfortable.",
+                            Price = 30m,
+                            ServiceName = "Nail Trimming",
+                            ServiceType = "Salon"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Description = "Supervised daytime care in a safe and welcoming environment. Available daily from 08:00 to 19:00. Price per day.",
+                            Price = 15m,
+                            ServiceName = "Daycare",
+                            ServiceType = "Hotel"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Description = "Monthly subscription including unlimited daycare and overnight stays, plus a 5% discount on all other services.",
+                            Price = 600m,
+                            ServiceName = "VIP Subscription",
+                            ServiceType = "Misc"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
