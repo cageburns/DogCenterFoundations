@@ -43,3 +43,11 @@
      
 
 </div>
+
+<form asp-action="Delete"
+      asp-route-id="@Model.Id"
+      method="post"
+      onsubmit="return confirm('Are you sure you want to delete this medical record?');">
+
+    <button type="submit">Delete</button>
+</form>
