@@ -13,14 +13,14 @@
     </div>
 }
 
-<p>@Model.Description</p>
+<div class="bg-white p-4 rounded mt-3" style="max-width: 650px;">
 
-<p>
-    <strong>Price</strong> €@Model.Price.ToString("F2")
-</p>
-<p>
-    VIP members receive a 5% discount.
-</p>
+    <p>@Model.Description</p>
+
+    <p>
+        <strong>Price</strong> €@Model.Price.ToString("F2")
+    </p>
+</div>
 
 @if (User.Identity?.IsAuthenticated == true)
 {
